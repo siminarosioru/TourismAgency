@@ -48,6 +48,12 @@ public:
 		cout << "Country: " << Agency::country << endl;
 		cout << "Number of days: " << Agency::numberOfDays << endl;
 	}
+
+	//this function accesses the private member of the class
+	float returnPrice()
+	{
+		return Agency::price;
+	}
 };
 
 //the derived class
@@ -97,6 +103,7 @@ int main()
 	int numberOfDays;
 	string sandType;
 	float temperature;
+	float lowestPrice;
 
 	/* create the matrix of objects with maximum 10 offers
 	* the object is the instantiation of the class
@@ -110,6 +117,7 @@ int main()
 	{
 		cout << "1. Seaside holiday" << endl;
 		cout << "2. Show the offers for seaside holidays" << endl;
+		cout << "3. Find the lowest price offered for seaside holiday" << endl;
 		cout << "0. Exit " << endl;
 
 		cout << "Choose the option: ";
@@ -141,6 +149,19 @@ int main()
 			{
 				//displaying the entered offers
 				objSeaside[i].display();
+			}
+			break;
+
+		case 3:
+			cout << "The offers with the lowest price than ";
+			cin >> lowestPrice;
+
+			for (int i = 0; i < totalNrOffers; i++)
+			{
+				if (objSeaside[i].returnPrice() < lowestPrice)
+				{
+					objSeaside[i].display();
+				}
 			}
 			break;
 
