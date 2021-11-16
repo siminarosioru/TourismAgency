@@ -54,6 +54,12 @@ public:
 	{
 		return Agency::price;
 	}
+
+	//this function accesses the private member of the class
+	int returnOfferNumber()
+	{
+		return Agency::offerNumber;
+	}
 };
 
 //the derived class
@@ -104,6 +110,7 @@ int main()
 	string sandType;
 	float temperature;
 	float lowestPrice;
+	int delete_offerNumber;
 
 	/* create the matrix of objects with maximum 10 offers
 	* the object is the instantiation of the class
@@ -118,6 +125,7 @@ int main()
 		cout << "1. Seaside holiday" << endl;
 		cout << "2. Show the offers for seaside holidays" << endl;
 		cout << "3. Find the lowest price offered for seaside holiday" << endl;
+		cout << "4. Delete an offer" << endl;
 		cout << "0. Exit " << endl;
 
 		cout << "Choose the option: ";
@@ -161,6 +169,25 @@ int main()
 				if (objSeaside[i].returnPrice() < lowestPrice)
 				{
 					objSeaside[i].display();
+				}
+			}
+			break;
+
+		case 4:
+			cout << "Enter the offer you want to delete:  ";
+			cin >> delete_offerNumber;
+
+			for (int i = 0; i < totalNrOffers; i++)
+			{
+				if (objSeaside[i].returnOfferNumber() == delete_offerNumber)
+				{
+					for(int j = i; j < totalNrOffers; j++)
+					{
+						//overlapping offers
+						objSeaside[j] = objSeaside[j + 1];
+						//decrementing the number of offers
+						totalNrOffers--;
+					}
 				}
 			}
 			break;
