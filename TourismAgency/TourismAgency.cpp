@@ -99,6 +99,40 @@ public:
 	}
 };
 
+//the derived class
+class MountainHoliday : public Agency
+{
+protected:
+	int altitude;
+
+public:
+	//default constructor
+	MountainHoliday() 
+	{
+	}
+
+	//constructor with all parameters (+ basic class)
+	MountainHoliday(int offerNumber, float price, string locality, string country, int numberOfDays, int altitude) :
+		Agency(offerNumber, price, locality, country, numberOfDays)
+	{
+		MountainHoliday::altitude = altitude;
+	}
+
+	//destructor
+	~MountainHoliday()
+	{
+	}
+
+	//the display() function
+	void display()
+	{
+		//also call the display() function from the base class
+		Agency::display();
+
+		cout << "The altitude: " << MountainHoliday::altitude << endl;
+	}
+};
+
 int main()
 {
     //declare the variables
@@ -111,12 +145,14 @@ int main()
 	float temperature;
 	float lowestPrice;
 	int delete_offerNumber;
+	int altitude;
 
 	/* create the matrix of objects with maximum 10 offers
 	* the object is the instantiation of the class
 	* and the class is a sketch of the object
 	*/
 	SeasideHoliday objSeaside[10];
+	MountainHoliday objMountain[10];
 	
 	unsigned int totalNrOffers, option;
 
@@ -126,6 +162,7 @@ int main()
 		cout << "2. Show the offers for seaside holidays" << endl;
 		cout << "3. Find the lowest price offered for seaside holiday" << endl;
 		cout << "4. Delete an offer" << endl;
+		cout << "5. Mountain holiday" << endl;
 		cout << "0. Exit " << endl;
 
 		cout << "Choose the option: ";
@@ -189,6 +226,24 @@ int main()
 						totalNrOffers--;
 					}
 				}
+			}
+			break;
+
+		case 5:
+			cout << "Total number of offers: ";
+			cin >> totalNrOffers;
+
+			for (int i = 0; i < totalNrOffers; i++)
+			{
+				cout << "Offer number: "; cin >> offerNumber;
+				cout << "Price: "; cin >> price;
+				cout << "Locality: "; cin >> locality;
+				cout << "Country: "; cin >> country;
+				cout << "Number of days: "; cin >> numberOfDays;
+				cout << "Altitude: "; cin >> altitude;
+
+				//the object calls the constructor with the parameters
+				objMountain[i] = MountainHoliday(offerNumber, price, locality, country, numberOfDays, altitude);
 			}
 			break;
 
