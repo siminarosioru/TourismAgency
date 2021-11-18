@@ -163,6 +163,7 @@ int main()
 		cout << "3. Find the lowest price offered for seaside holiday" << endl;
 		cout << "4. Delete an offer" << endl;
 		cout << "5. Mountain holiday" << endl;
+		cout << "6. Display the offers for mountain holiday" << endl;
 		cout << "0. Exit " << endl;
 
 		cout << "Choose the option: ";
@@ -192,7 +193,7 @@ int main()
 		case 2:
 			for (int i = 0; i < totalNrOffers; i++)
 			{
-				//displaying the entered offers
+				//displaying the offers
 				objSeaside[i].display();
 			}
 			break;
@@ -244,6 +245,14 @@ int main()
 
 				//the object calls the constructor with the parameters
 				objMountain[i] = MountainHoliday(offerNumber, price, locality, country, numberOfDays, altitude);
+			}
+			break;
+
+		case 6:
+			for (int i = 0; i < totalNrOffers; i++)
+			{
+				//displaying the offers entered
+				objMountain[i].display();
 			}
 			break;
 
