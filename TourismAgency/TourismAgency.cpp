@@ -164,6 +164,7 @@ int main()
 		cout << "4. Delete an offer" << endl;
 		cout << "5. Mountain holiday" << endl;
 		cout << "6. Display the offers for mountain holiday" << endl;
+		cout << "7. Find the lowest price offered for mountain holiday" << endl;
 		cout << "0. Exit " << endl;
 
 		cout << "Choose the option: ";
@@ -253,6 +254,19 @@ int main()
 			{
 				//displaying the offers entered
 				objMountain[i].display();
+			}
+			break;
+
+		case 7:
+			cout << "The offers with the lowest price than ";
+			cin >> lowestPrice;
+
+			for (int i = 0; i < totalNrOffers; i++)
+			{
+				if (objMountain[i].returnPrice() < lowestPrice)
+				{
+					objMountain[i].display();
+				}
 			}
 			break;
 
